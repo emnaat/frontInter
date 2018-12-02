@@ -1,0 +1,81 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+
+<div class="container">
+  <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
+  <table class="table table-striped">
+    <tbody>
+    <tr>
+      <td colspan="1">
+        <form class="well form-horizontal" #modifierform="ngForm" (submit)="submit(modifierform)" novalidate>
+          <fieldset>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label">Numéro de serie</label>
+              <div class="col-md-8 inputGroupContainer">
+                <div class="input-group">
+                  <input id="numserie"
+                         [(ngModel)]="routeur.numserie" name="numserie"
+                         placeholder="Numero de serie" class="form-control" r
+                         equired="true" value="" type="text"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-4 control-label">Marque</label>
+              <div class="col-md-8 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
+                  <select id="marque" name="marque"   [(ngModel)]="routeur.marque" class="selectpicker form-control">
+                    <option value="Belkin">Belkin</option>
+                    <option value="Bewan">Bewan</option>
+                    <option value="D-link">D-link</option>
+                    <option value="Motorola">Motorola</option>
+                    <option value="Asus">Asus</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-4 control-label">Type</label>
+              <div class="col-md-8 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
+                  <select id="type" name="type"  [(ngModel)]="routeur.type" class="selectpicker form-control" required>
+                    <option value="Routeur"  selected>Routeur</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-4 control-label">Utilisateur</label>
+              <div class="col-md-8 inputGroupContainer">
+                <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <ngx-select  id="utilisateur" name="utilisateur"
+                               optionValueField="idUtilisateur"
+                               optionTextField="nom"
+                               [items]="listUtilisateurs"
+                               [(ngModel)]="routeur.utilisateur">
+
+                  </ngx-select>
+                </div>
+              </div>
+            </div>
+
+          </fieldset>
+          <div style="text-align: center">
+            <button type="submit"  class="btn btn-primary" >Modifier</button> &nbsp; &nbsp; &nbsp;
+          </div>
+
+        </form>
+      </td>
+
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+

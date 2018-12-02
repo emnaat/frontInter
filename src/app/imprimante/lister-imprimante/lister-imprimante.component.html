@@ -1,0 +1,56 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+<div class=" row" style="margin-top: 170px">
+  <div class="col-md-12">
+    <div class="table-responsive">
+      <table id="mytable" class="table table-bordred table-striped">
+        <thead style="text-align: center" >
+        <th>Num serie</th>
+        <th>Marque</th>
+        <th>Utilisateur</th>
+        <th>Cartouche compatible</th>
+        <th>Date mise en oeuvre</th>
+        <th>Fin garantie</th>
+        <th>Etat</th>
+        <th>Modifier</th>
+        <th>Supprimer</th>
+        </thead>
+        <tbody >
+        <tr *ngFor="let imp of imprimantes">
+          <td>{{imp.numserie}}</td>
+          <td>{{imp.marque}}</td>
+          <td>{{imp.utilisateur.nom+'  '+imp.utilisateur.prenom}}</td>
+          <td>{{imp.cartouche}}</td>
+          <td>{{imp.datemiseservice|  date:'short'}}</td>
+          <td>{{imp.fingarantie|  date:'short'}}</td>
+          <td>{{imp.deffectueux}}</td>
+
+          <td>
+            <p data-placement="top" data-toggle="tooltip" title="Edit">
+              <button [routerLink]="['../modifierImprimante',imp.idEquip]"  data-title="Edit" data-toggle="modal" data-target="#edit">
+                <span class="glyphicon glyphicon-pencil"></span></button>
+              <!--(click)="openModal()" class="btn btn-primary btn-xs" -->
+            </p>
+          </td>
+          <td>
+
+            <p data-placement="top" data-toggle="tooltip" title="Delete">
+              <button class="btn btn-danger btn-xs" (click)="delete(imp.idEquip)" data-title="Delete" data-toggle="modal" data-target="#delete"><span
+                class="glyphicon glyphicon-trash"></span></button>
+            </p>
+          </td>
+        </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
+

@@ -1,0 +1,3 @@
+interface  Reclamation {
+idReclmation: number;
+}
