@@ -1,3 +1,0 @@
-interface  Reclamation {
-idReclmation: number;
-}
